@@ -6,10 +6,10 @@
 ###link
 
 ```html
- <link href="../leaderboard/jquery.leaderboard-1.0.css" rel="stylesheet" media="screen">
- <script src="js/jquery-1.7.2.min.js"></script>
- <script src="js/jquery.tinysort.min.js"></script>
- <script src="leaderboard/jquery.leaderboard-1.0.js"></script>
+ <link href="leaderboard/jquery.leaderboard-1.0.css" rel="stylesheet" media="screen">  
+ <script src="js/jquery-1.7.2.min.js"></script>  
+ <script src="js/jquery.tinysort.min.js"></script>  
+ <script src="leaderboard/jquery.leaderboard-1.0.js"></script>  
 ```
 
 ###markup
