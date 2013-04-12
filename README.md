@@ -20,9 +20,11 @@
 	<ul>
 		<li class="title">Product A Sales</li>
 		<li class="rank"></li>
+		
 		<li data-rel="US" data-value="845">
-			<span class="name">United States</span>
+			<span class			="name">United States</span>
 		</li>
+		<!--more data-->
 	</ul>
 	<ul>
 		<li class="title">Product B Sales</li>
@@ -31,6 +33,8 @@
 		<li data-rel="US" data-value="485">
 			<span class="name">United States</span>
 		</li>
+		<!--more data-->
+	</ul>	
 	<div class="total"></div>
  </div>
 ```
