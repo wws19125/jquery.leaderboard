@@ -22,7 +22,7 @@
 		<li class="rank"></li>
 		
 		<li data-rel="US" data-value="845">
-			<span class			="name">United States</span>
+			<span class="name">United States</span>
 		</li>
 		<!--more data-->
 	</ul>
