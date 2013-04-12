@@ -50,10 +50,10 @@ $(document).ready(function() {
 ```
 
 ##Requirements
-1. [jQuery](http://jquery.com/)
-2. [TinySort](https://github.com/Sjeiti/TinySort)
+* [jQuery](http://jquery.com/)
+* [TinySort](https://github.com/Sjeiti/TinySort)
 
 ##Special Thanks
-1. jQuery
-2. TinySort
-3. Twitter Bootstrap
+* jQuery
+* TinySort
+* Twitter Bootstrap
