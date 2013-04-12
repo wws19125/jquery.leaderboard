@@ -1,5 +1,5 @@
 #jQuery Leaderboard
-A plugin to generate simple leaderboard tables.
+	A plugin to generate simple leaderboard tables.
 
 ##Getting Started
 
@@ -49,7 +49,7 @@ $(document).ready(function() {
 1. [jQuery](http://jquery.com/)
 2. [TinySort](https://github.com/Sjeiti/TinySort)
 
-#Special Thanks
+##Special Thanks
 1. jQuery
 2. TinySort
 3. Twitter Bootstrap
