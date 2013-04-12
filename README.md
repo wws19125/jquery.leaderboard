@@ -5,7 +5,7 @@
 
 ###link
 
-```
+```html
  <link href="../leaderboard/jquery.leaderboard-1.0.css" rel="stylesheet" media="screen">
  <script src="js/jquery-1.7.2.min.js"></script>
  <script src="js/jquery.tinysort.min.js"></script>
@@ -14,7 +14,7 @@
 
 ###markup
 
-```
+```html
  <div class="leaderboard">
 	<h4>Product Sales</h4>
 	<ul>
@@ -37,7 +37,7 @@
 
 ###javascript
 
-```
+```js
 $(document).ready(function() { 
 	$(".leaderboard").jqleaderboard({
 		// options
