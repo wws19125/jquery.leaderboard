@@ -70,13 +70,16 @@
 		        }
 		    });
 
-		    $(".leaderboard .total").html("Total: $" +  total);
+		    _this._container.find(".total").html("Total: $" +  total);
 		});
+
+		return _this;
 	};
 
 	jqLeaderboard.prototype._select_first = function(e) {
 		var _this = this;
-		_this._container.find("ul li").not(exclude).not(".title, .rank").first().trigger('click');
+		_this._container.find("ul li").not(exclude).first().trigger('click');
+		return _this;
 	};
 
 	// public methods here
@@ -98,17 +101,20 @@
 
 	jqLeaderboard.prototype.leaderboard_select = function(code) {
 		var _this = this;
+    	var total = 0.0;
 
 		_this._container.find("ul li").not(exclude).each(function() {
 	        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
 	            $(this).toggleClass("selected");
+	            total += $(this).attr('data-value') * 1;
 	            $(this).removeClass("hover");
 	        } else {
 	        	$(this).removeClass("selected");
 	        }
 	    });
-
-	    return _this;
+        
+    	_this._container.find(".total").html("Total: $" +  total);
+	  	return _this;
 	}
 
 	$.fn.jqleaderboard = function(options) {

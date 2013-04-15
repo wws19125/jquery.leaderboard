@@ -60,3 +60,7 @@ $(document).ready(function() {
 * jQuery
 * TinySort
 * Twitter Bootstrap
+
+##License
+* Copyright 2013
+* Released under the MIT license
