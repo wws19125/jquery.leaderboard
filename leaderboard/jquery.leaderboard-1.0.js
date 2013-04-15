@@ -88,6 +88,8 @@
 	        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
 	            $(this).toggleClass("hover");
 	            $(this).removeClass("selected");
+	        } else {
+	        	$(this).removeClass("hover");
 	        }
 	    });
 
@@ -101,6 +103,8 @@
 	        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
 	            $(this).toggleClass("selected");
 	            $(this).removeClass("hover");
+	        } else {
+	        	$(this).removeClass("selected");
 	        }
 	    });
 
