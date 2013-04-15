@@ -47,8 +47,8 @@
 		_this._container.find("ul li").not(exclude).bind('mouseover', function() {
 		    var code = $(this).attr("data-rel");
 
-		    $(".leaderboard ul li").not(".title, .rank").each(function() {
-		        if($(this).attr('data-rel') == code.toUpperCase()) {
+		    _this._container.find("ul li").not(exclude).each(function() {
+		        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
 		            $(this).toggleClass("hover");
 		        } else {
 		            $(this).removeClass("hover");
@@ -60,8 +60,8 @@
 		    var total = 0;
 		    var code = $(this).attr("data-rel");
 
-		    $(".leaderboard ul li").not(".title, .rank").each(function() {
-		        if($(this).attr('data-rel') == code.toUpperCase()) {
+		    _this._container.find("ul li").not(exclude).each(function() {
+		        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
 		            $(this).toggleClass("selected");
 		            total += $(this).attr('data-value') * 1;
 		            $(this).parent().children(".rank").first().css('display', 'block').html($(this).prevAll().length - 1);
@@ -74,10 +74,38 @@
 		});
 	};
 
-	// public methods here
 	jqLeaderboard.prototype._select_first = function(e) {
+		var _this = this;
 		_this._container.find("ul li").not(exclude).not(".title, .rank").first().trigger('click');
 	};
+
+	// public methods here
+
+	jqLeaderboard.prototype.leaderboard_highlight = function(code) {
+		var _this = this;
+
+		_this._container.find("ul li").not(exclude).each(function() {
+	        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
+	            $(this).toggleClass("hover");
+	            $(this).removeClass("selected");
+	        }
+	    });
+
+	    return _this;
+	}
+
+	jqLeaderboard.prototype.leaderboard_select = function(code) {
+		var _this = this;
+
+		_this._container.find("ul li").not(exclude).each(function() {
+	        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
+	            $(this).toggleClass("selected");
+	            $(this).removeClass("hover");
+	        }
+	    });
+
+	    return _this;
+	}
 
 	$.fn.jqleaderboard = function(options) {
 		return this.each(function() {

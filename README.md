@@ -9,7 +9,7 @@
  <link href="leaderboard/jquery.leaderboard-1.0.css" rel="stylesheet" media="screen">  
  <script src="js/jquery-1.7.2.min.js"></script>  
  <script src="js/jquery.tinysort.min.js"></script>  
- <script src="leaderboard/jquery.leaderboard-1.0.js"></script>  
+ <script src="../leaderboard/jquery.leaderboard-1.0.min.js"></script>  
 ```
 
 ###markup
@@ -43,9 +43,12 @@
 
 ```js
 $(document).ready(function() { 
-	$(".leaderboard").jqleaderboard({
+	var lb = $(".leaderboard").jqleaderboard({
 		// options
 	});
+
+	lb_object = lb.data("leaderboard");
+	lb_object.leaderboard_highlight("US").leaderboard_select("CA");
 });
 ```
 
