@@ -107,6 +107,7 @@
 	        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
 	            $(this).toggleClass("selected");
 	            total += $(this).attr('data-value') * 1;
+	            $(this).parent().children(".rank").first().css('display', 'block').html($(this).prevAll().length - 1);
 	            $(this).removeClass("hover");
 	        } else {
 	        	$(this).removeClass("selected");
