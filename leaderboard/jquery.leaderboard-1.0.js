@@ -1,6 +1,7 @@
 /*!
  * jqLeaderboard Plugin
  * https://github.com/boostbob/jquery.leaderboard
+ * http://boostbob.github.io/jquery.leaderboard/
  *
  * Copyright 2013
  * Released under the MIT license
@@ -27,27 +28,35 @@
 		this.init();
 	};
 
+	// initialize
 	jqLeaderboard.prototype.init = function() { 
 		var _this = this;
+
 		_this._generate_markup();
 		_this._select_first();
 	};
 
+	// get the data node only
+	jqLeaderboard.prototype._get_data_node = function() {
+		return this._container.find("ul li").not(exclude);
+	};
+
+	// generate baisc markup
 	jqLeaderboard.prototype._generate_markup = function() {  
 		var _this = this;
 
 		_this._container.find("ul").each(function() {
-			$(this).find("li").not(exclude).tsort({attr: 'data-value', order: 'desc'});
+			_this._get_data_node().tsort({attr: 'data-value', order: 'desc'});
 		});
 
-		_this._container.find("ul li").not(exclude).each(function() {
+		_this._get_data_node().each(function() {
 			$(this).append('<span class="value">$' + $(this).attr('data-value') + '</span>');
 		});
 
-		_this._container.find("ul li").not(exclude).bind('mouseover', function() {
+		_this._get_data_node().bind('mouseover', function() {
 		    var code = $(this).attr("data-rel");
 
-		    _this._container.find("ul li").not(exclude).each(function() {
+		    _this._get_data_node().each(function() {
 		        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
 		            $(this).toggleClass("hover");
 		        } else {
@@ -56,38 +65,38 @@
 		    });
 		});
 
-		_this._container.find("ul li").not(exclude).bind('click', function() {
+		_this._get_data_node().bind('click', function() {
 		    var total = 0;
 		    var code = $(this).attr("data-rel");
-
-		    _this._container.find("ul li").not(exclude).each(function() {
-		        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
-		            $(this).toggleClass("selected");
-		            total += $(this).attr('data-value') * 1;
-		            $(this).parent().children(".rank").first().css('display', 'block').html($(this).prevAll().length - 1);
-		        } else {
-		            $(this).removeClass("selected");
-		        }
-		    });
-
-		    _this._container.find(".total").html("Total: $" +  total);
+		    _this._select(code);
 		});
 
 		return _this;
 	};
 
-	jqLeaderboard.prototype._select_first = function(e) {
+	jqLeaderboard.prototype._select = function(code) { 
 		var _this = this;
-		_this._container.find("ul li").not(exclude).first().trigger('click');
-		return _this;
-	};
+		var total = 0;
 
-	// public methods here
+	    _this._get_data_node().each(function() {
+	        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
+	            $(this).toggleClass("selected");
+	            total += $(this).attr('data-value') * 1;
+	            $(this).parent().children(".rank").first().css('display', 'block').html($(this).prevAll().length - 1);
+	        } else {
+	            $(this).removeClass("selected");
+	        }
+	    });
 
-	jqLeaderboard.prototype.leaderboard_highlight = function(code) {
+	    _this._container.find(".total").html("Total: $" +  total);
+
+	    return _this;
+	}
+
+	jqLeaderboard.prototype._hover = function(code) {
 		var _this = this;
 
-		_this._container.find("ul li").not(exclude).each(function() {
+		_this._get_data_node().each(function() {
 	        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
 	            $(this).toggleClass("hover");
 	            $(this).removeClass("selected");
@@ -99,23 +108,19 @@
 	    return _this;
 	}
 
-	jqLeaderboard.prototype.leaderboard_select = function(code) {
-		var _this = this;
-    	var total = 0.0;
+	jqLeaderboard.prototype._select_first = function(e) {
+		this._get_data_node().first().trigger('click');
+		return this;
+	};
 
-		_this._container.find("ul li").not(exclude).each(function() {
-	        if($(this).attr('data-rel').toUpperCase() == code.toUpperCase()) {
-	            $(this).toggleClass("selected");
-	            total += $(this).attr('data-value') * 1;
-	            $(this).parent().children(".rank").first().css('display', 'block').html($(this).prevAll().length - 1);
-	            $(this).removeClass("hover");
-	        } else {
-	        	$(this).removeClass("selected");
-	        }
-	    });
-        
-    	_this._container.find(".total").html("Total: $" +  total);
-	  	return _this;
+	// public methods
+
+	jqLeaderboard.prototype.leaderboard_highlight = function(code) {
+		return this._hover(code);
+	}
+
+	jqLeaderboard.prototype.leaderboard_select = function(code) {
+		return this._select(code);
 	}
 
 	$.fn.jqleaderboard = function(options) {

@@ -1,5 +1,5 @@
 #jQuery Leaderboard
-	A plugin to generate simple leaderboard tables.
+A plugin to generate simple leaderboard tables. Leaderboard lets you compare rankings across different categories, it's a one of the popular used forms of statistical analysis model.
 
 ##Getting Started
 

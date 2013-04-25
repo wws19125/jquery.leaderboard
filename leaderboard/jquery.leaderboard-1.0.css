@@ -1,6 +1,7 @@
 /*!
  * jqLeaderboard Plugin
  * https://github.com/boostbob/jquery.leaderboard
+ * http://boostbob.github.io/jquery.leaderboard/
  *
  * Copyright 2013
  * Released under the MIT license
@@ -12,11 +13,12 @@
 
 .leaderboard{
     margin: 0 auto;
-    background-color:#585858;
+    background-color: #1f1f1f;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
     overflow:hidden;
     margin-top:10px;
     margin-bottom:10px;
-    color:#ccc;
+    color: #fff;
 }
 
 .leaderboard .total{
