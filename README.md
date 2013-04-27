@@ -58,7 +58,6 @@ $(document).ready(function() {
 
 ##Special Thanks
 * jQuery
-* TinySort
 * Twitter Bootstrap
 
 ##License
