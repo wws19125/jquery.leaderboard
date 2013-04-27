@@ -6,10 +6,9 @@ A plugin to generate simple leaderboard tables. Leaderboard lets you compare ran
 ###link
 
 ```html
- <link href="leaderboard/jquery.leaderboard-1.0.css" rel="stylesheet" media="screen">  
+ <link href="leaderboard/jquery.leaderboard-1.1.css" rel="stylesheet" media="screen">  
  <script src="js/jquery-1.7.2.min.js"></script>  
- <script src="js/jquery.tinysort.min.js"></script>  
- <script src="leaderboard/jquery.leaderboard-1.0.min.js"></script>  
+ <script src="leaderboard/jquery.leaderboard-1.1.min.js"></script>  
 ```
 
 ###markup
@@ -54,7 +53,6 @@ $(document).ready(function() {
 
 ##Requirements
 * [jQuery](http://jquery.com/)
-* [TinySort](https://github.com/Sjeiti/TinySort)
 
 ##Special Thanks
 * jQuery
