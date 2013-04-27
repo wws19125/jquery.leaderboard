@@ -32,6 +32,7 @@
 	jqLeaderboard.prototype.init = function() { 
 		var _this = this;
 
+		_this._tsort();
 		_this._generate_markup();
 		_this._select_first();
 	};
@@ -41,13 +42,30 @@
 		return this._container.find("ul li").not(exclude);
 	};
 
-	// generate baisc markup
-	jqLeaderboard.prototype._generate_markup = function() {  
+	// tsort
+	jqLeaderboard.prototype._tsort = function() {  
 		var _this = this;
 
 		_this._container.find("ul").each(function() {
-			_this._get_data_node().tsort({attr: 'data-value', order: 'desc'});
+			var parent = $(this);
+			var nodes = parent.find("li").toArray();
+
+			// remove first
+			parent.find("li").remove();
+
+			nodes.sort(function(a, b) {
+				return $(b).attr("data-value") - $(a).attr("data-value");
+			});
+
+			$.each(nodes, function(idx, node) {
+				parent.append(node);
+			});
 		});
+	};
+
+	// generate baisc markup
+	jqLeaderboard.prototype._generate_markup = function() {  
+		var _this = this;
 
 		_this._get_data_node().each(function() {
 			$(this).append('<span class="value">$' + $(this).attr('data-value') + '</span>');
